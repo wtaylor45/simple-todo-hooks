@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ItemContainer } from './containers/ItemContainer';
 import styled from 'styled-components';
 import { TodoList } from './containers/TodoList';
 
@@ -10,6 +9,7 @@ const Container = styled.div`
   height: 100vh;
   color: white;
   background-color: #444;
+  padding: 12px;
 `
 
 class App extends Component {

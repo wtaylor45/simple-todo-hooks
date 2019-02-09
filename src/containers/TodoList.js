@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { ItemContainer } from './ItemContainer';
+import { TodoItem } from './TodoItem';
 import { List } from '../presentational/List';
+import { TextField } from '../presentational/TextField';
+import { Button } from '../presentational/Button';
 
 export const TodoList = () => {
     const [tasks, setTasks] = useState([]);
@@ -18,10 +20,10 @@ export const TodoList = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" onChange={handleInput} />
-                <button type="submit">Submit me</button>
+                <TextField onChange={handleInput} />
+                <Button type="submit">Submit me</Button>
             </form>
-            <List>{tasks.map((task, i) => <ItemContainer key={i}>{task}</ItemContainer>)}</List>
+            <List>{tasks.map((task, i) => <TodoItem key={i}>{task}</TodoItem>)}</List>
         </div>
     )
 };
