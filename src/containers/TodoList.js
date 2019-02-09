@@ -10,7 +10,11 @@ export const TodoList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setTasks([...tasks, currentTask]);
+        if(currentTask){
+            setTasks([...tasks, currentTask]);
+            setCurrentTask('');
+            document.getElementById('current-task').value = '';
+        } 
     }
 
     const handleInput = (e) => {
@@ -20,7 +24,7 @@ export const TodoList = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <TextField onChange={handleInput} />
+                <TextField id="current-task" onChange={handleInput} />
                 <Button type="submit">Submit me</Button>
             </form>
             <List>{tasks.map((task, i) => <TodoItem key={i}>{task}</TodoItem>)}</List>
