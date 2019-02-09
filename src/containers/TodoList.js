@@ -6,19 +6,24 @@ import { Button } from '../presentational/Button';
 
 export const TodoList = () => {
     const [tasks, setTasks] = useState([]);
-    const [currentTask, setCurrentTask] = useState('');
+    const [currentTask, setCurrentTask] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(currentTask){
             setTasks([...tasks, currentTask]);
-            setCurrentTask('');
+            setCurrentTask({});
             document.getElementById('current-task').value = '';
         } 
     }
 
-    const handleInput = (e) => {
-        setCurrentTask(e.target.value);
+    const itemClickHandler = (id) => {
+        let newTasks = tasks.filter(task => task.id !== id);
+        setTimeout(() => setTasks(newTasks), 1000);
+    }
+
+    const handleInput = (e) => { 
+        setCurrentTask({text: e.target.value, id: Date.now()});
     }
 
     return (
@@ -27,7 +32,7 @@ export const TodoList = () => {
                 <TextField id="current-task" onChange={handleInput} />
                 <Button type="submit">Submit me</Button>
             </form>
-            <List>{tasks.map((task, i) => <TodoItem key={i}>{task}</TodoItem>)}</List>
+            <List>{tasks.map((task, i) => <TodoItem key={task.id} id={task.id} onClick={itemClickHandler}>{task.text}</TodoItem>)}</List>
         </div>
     )
 };
