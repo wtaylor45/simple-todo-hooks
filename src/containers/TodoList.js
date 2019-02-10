@@ -19,7 +19,7 @@ export const TodoList = () => {
 
     const itemClickHandler = (id) => {
         let newTasks = tasks.filter(task => task.id !== id);
-        setTimeout(() => setTasks(newTasks), 1000);
+        setTasks(newTasks);
     }
 
     const handleInput = (e) => { 
@@ -28,7 +28,7 @@ export const TodoList = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 <TextField id="current-task" onChange={handleInput} />
                 <Button type="submit">Submit me</Button>
             </form>

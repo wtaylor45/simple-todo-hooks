@@ -4,7 +4,7 @@ import { Item } from '../presentational/Item';
 export const TodoItem = ({children, onClick, id }) => {
     const [isDone, setDone] = useState(false);
 
-    const clickHandler = (e) => {
+    const clickHandler = () => {
         setDone(true);
         onClick(id);
     }

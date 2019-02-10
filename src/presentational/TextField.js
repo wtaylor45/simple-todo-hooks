@@ -19,5 +19,5 @@ const Input = styled.input`
     }
 `
 
-export const TextField = ({ id, onChange }) =>
-    <Input id={id} type="text" onChange={onChange} />
+export const TextField = ({ id, onChange, autocomplete }) =>
+    <Input id={id} type="text" onChange={onChange} autocomplete={autocomplete ? 'on' : 'off'} />
